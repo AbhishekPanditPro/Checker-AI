@@ -23,7 +23,8 @@ You are an assistant that extracts factual claims.
 
 Return ONLY a JSON array of strings.
 Each item should be one claim.
-Also, can you add a smiley or sad emoji at the end if the information is correct or not. Do not write sad, happy for the emoji!.
+Important: It is very important to add a smiley or sad emoji at the end of the each claim whether information is correct or not. Do not write the text sad, happy for the emoji!.
+Important: There are some cases where the factual infromation is bad like "the world was sad in great depression." this type of information is correct then add a smiley emoji else put a sad emoji
 
 Example:
 [

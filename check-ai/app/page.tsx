@@ -19,8 +19,8 @@ export default function Home() {
   async function handleSearch() {
     setIsLoading(true);
     setError(null);
-    setClaims([])
-    setFactualInformation([])
+    setClaims([]);
+    setFactualInformation([]);
     if (!query) {
       console.log("There is nothing");
     }
@@ -64,14 +64,13 @@ export default function Home() {
         const parsedList: ClaimList = JSON.parse(jsonString);
 
         console.log("Here is your parsed list:", parsedList);
-        if (parsedList[0].includes("😔")){
-          console.log("therer isr saaaaaaaadddd emoji present")
-
+        if (parsedList[0].includes("😔")) {
+          console.log("therer isr saaaaaaaadddd emoji present");
         }
-        
-
+        setClaims([]);
         setClaims(parsedList);
-        handlefactualSearch();
+        console.log("The new claim is", claims)
+        
       } catch (parseError) {
         setError(false);
         console.error(
@@ -81,13 +80,21 @@ export default function Home() {
         );
         // setError("The AI response was not in the expected list format.");
       }
-    } finally {
-      setIsLoading(false);
+    } catch(err){
+      console.log("This is not wrokng")
+
     }
+    finally {
+      setIsLoading(false);
+    
+    }
+    setFactualInformation([])
+    handlefactualSearch();
   }
 
   async function handlefactualSearch() {
     console.log("handling the factual information");
+    console.log(claims);
     setIsLoading(true);
     setError(null);
     if (claims.length === 0) {
@@ -133,8 +140,8 @@ export default function Home() {
         // 3. Now, parse the clean string
         const parsedList: FactList = JSON.parse(jsonString);
         console.log("Here is your parsed list:", parsedList);
+        setFactualInformation([]);
         setFactualInformation(parsedList);
-
       } catch (parseError) {
         setError(false);
         console.error(
@@ -197,55 +204,52 @@ export default function Home() {
               )}
             </button>
             <div className="block">
-              
-            <ol className="flex p-5 flex-col justify-start ">
-              {claims.map((claim, i) => (
-                <motion.li
-                  // Framer Motion Properties:
-                  initial={{ opacity: 0, y: 20 }} // Starts invisible and 20px below its final position
-                  animate={{ opacity: 1, y: 0 }} // Animates to full opacity and correct position
-                  exit={{ opacity: 0, x: -20 }} // (Optional) Animates out if the claim is removed
-                  transition={{ duration: 0.5 }} // Sets the speed of the animation
-                  // Existing CSS Classes (Tailwind):
-                  className={`${defaultClassName} ${
-                    claim.includes("😞") ||claim.includes("☹") ||claim.includes("😔")  ? negativeClassName : positiveClassName
-                  }`}
-                  key={i}
-                >
-                  {"Claim: " + claim}
-                </motion.li>
-              ))}
-            </ol>
+              <ol className="flex p-5 flex-col justify-start ">
+                {claims.map((claim, i) => (
+                  <motion.li
+                    // Framer Motion Properties:
+                    initial={{ opacity: 0, y: 20 }} // Starts invisible and 20px below its final position
+                    animate={{ opacity: 1, y: 0 }} // Animates to full opacity and correct position
+                    exit={{ opacity: 0, x: -20 }} // (Optional) Animates out if the claim is removed
+                    transition={{ duration: 0.5 }} // Sets the speed of the animation
+                    // Existing CSS Classes (Tailwind):
+                    className={`${defaultClassName} ${
+                      claim.includes("😞") ||
+                      claim.includes("☹") ||
+                      claim.includes("😔")
+                        ? negativeClassName
+                        : positiveClassName
+                    }`}
+                    key={i}
+                  >
+                    {"Claim: " + claim}
+                  </motion.li>
+                ))}
+              </ol>
 
-            
-            <ol className="flex flex-col items-end-safe bg-gray-700 rounded-xl mt-10 p-5 transition-all duration-300 ease-in-out hover:bg-gray-600  ">
-              {facts.map((fact, i) => (
-                <motion.li
-
-                  initial={{ opacity: 0, y: 20 }} // Starts invisible and 20px below its final position
-                  animate={{ opacity: 1, y: 0 }} // Animates to full opacity and correct position
-                  exit={{ opacity: 0, x: -20 }} // (Optional) Animates out if the claim is removed
-                  transition={{ duration: 0.5 }} // Sets the speed of the animation
-                  // Existing CSS Classes (Tailwind):
-                  className={`${defaultClassName} ${
-                    fact.includes("😞") || fact.includes("😔")  ? negativeClassName : positiveClassName
-                  }`}
-                  key={i}
-                >
-                  {"Fact: " + fact}
-                </motion.li>
-              ))}
-            </ol>
+              <ol className="flex flex-col items-end-safe bg-gray-700 rounded-xl mt-10 p-5 transition-all duration-300 ease-in-out hover:bg-gray-600  ">
+                {facts.map((fact, i) => (
+                  <motion.li
+                    initial={{ opacity: 0, y: 20 }} // Starts invisible and 20px below its final position
+                    animate={{ opacity: 1, y: 0 }} // Animates to full opacity and correct position
+                    exit={{ opacity: 0, x: -20 }} // (Optional) Animates out if the claim is removed
+                    transition={{ duration: 0.5 }} // Sets the speed of the animation
+                    // Existing CSS Classes (Tailwind):
+                    className={`${defaultClassName} ${
+                      fact.includes("😞") || fact.includes("😔") || fact.includes("SAD_EMOJI")
+                        ? negativeClassName
+                        : positiveClassName
+                    }`}
+                    key={i}
+                  >
+                    {"Fact: " + fact}
+                  </motion.li>
+                ))}
+              </ol>
             </div>
-
-
-
-
           </div>
         </main>
-        <div>
-          
-        </div>
+        <div></div>
       </div>
     </>
   );
