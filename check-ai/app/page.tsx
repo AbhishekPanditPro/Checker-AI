@@ -71,6 +71,8 @@ export default function Home() {
         setClaims(parsedList);
         console.log("The new claim is", claims)
         
+        setFactualInformation([])
+        handlefactualSearch(parsedList);
       } catch (parseError) {
         setError(false);
         console.error(
@@ -88,16 +90,15 @@ export default function Home() {
       setIsLoading(false);
     
     }
-    setFactualInformation([])
-    handlefactualSearch();
+  
   }
 
-  async function handlefactualSearch() {
+  async function handlefactualSearch(newClaims: string[]) {
     console.log("handling the factual information");
-    console.log(claims);
+    console.log(newClaims);
     setIsLoading(true);
     setError(null);
-    if (claims.length === 0) {
+    if (newClaims.length === 0) {
       console.log("There is nothing in the claim for factual search");
       setError(true);
     }
@@ -106,7 +107,7 @@ export default function Home() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          prompt: claims,
+          prompt: newClaims,
           // optional: custom system prompt
           systemPrompt:
             "Extract factual claims and return ONLY a JSON array of strings.",
