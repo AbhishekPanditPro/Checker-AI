@@ -29,6 +29,7 @@ Consider you are in a debate and you are on the audience side. The debaters star
 
 Build a working website that takes input in text from and gives out the claims and facts.
 
+![Phase 1 Diagram](https://github.com/AbhishekPanditPro/Checker-AI/blob/main/check-ai/public/phase1svg.svg?raw=1)
 
 ### Phase 2
 
