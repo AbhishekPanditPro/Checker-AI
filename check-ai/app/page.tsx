@@ -22,7 +22,8 @@ export default function Home() {
     setClaims([]);
     setFactualInformation([]);
     if (!query) {
-      console.log("There is nothing");
+      console.log("There is nothing to search");
+      return;
     }
     try {
       const res = await fetch("/api/ask", {

@@ -14,6 +14,9 @@ importers:
       framer-motion:
         specifier: ^12.23.24
         version: 12.23.24(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      mic:
+        specifier: ^2.1.2
+        version: 2.1.2
       next:
         specifier: 16.0.0
         version: 16.0.0(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -26,6 +29,9 @@ importers:
       react-dom:
         specifier: 19.2.0
         version: 19.2.0(react@19.2.0)
+      ws:
+        specifier: ^8.18.3
+        version: 8.18.3
     devDependencies:
       '@tailwindcss/postcss':
         specifier: ^4
@@ -1596,6 +1602,9 @@ packages:
   merge2@1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
     engines: {node: '>= 8'}
+
+  mic@2.1.2:
+    resolution: {integrity: sha512-rpl4tgdXX24sAzYwjRc5OZfGNAuhUIIjdd0cw8+Ubq7rp3iGhi40AdqcwurDWhEZADk60tPOxb3E2MpoeLeyxw==}
 
   micromatch@4.0.8:
     resolution: {integrity: sha512-PXwfBhYu0hBCPw8Dn0E+WDYb7af3dSLVWKi3HGv84IdF4TyFoC0ysxFd0Goxw7nSv4T/PzEJQxsYsEiFCKo2BA==}
@@ -3805,6 +3814,8 @@ snapshots:
   math-intrinsics@1.1.0: {}
 
   merge2@1.4.1: {}
+
+  mic@2.1.2: {}
 
   micromatch@4.0.8:
     dependencies:
