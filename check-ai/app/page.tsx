@@ -50,7 +50,7 @@ export default function Home() {
   const displayTranscript = (recordedText + (partial ? " " + partial : "")).trim();
 
   async function handleSearch() {
-    
+    stopTranscription();
     const queryToUse = (mode === "type" ? typedText : recordedText).trim();
 
     setError(null);
