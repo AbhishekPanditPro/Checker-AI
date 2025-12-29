@@ -214,7 +214,7 @@ export default function Home() {
         }
 
         // Send as bytes (most robust across SDK versions)
-        rtRef.current.sendAudio(new Uint8Array(pcm16.buffer));
+        rtRef.current.sendAudio(pcm16.buffer);
       };
 
       setIsRecording(true);
